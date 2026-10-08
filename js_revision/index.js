@@ -1,58 +1,53 @@
-// 1. You have an array of products with a `name` and `price`. 
-// Write a function `filterAffordableProducts(products, maxPrice)` 
-// that returns an array of products with a price less than or equal to `maxPrice`.
-    
-    const products = [
-      { name: "Laptop", price: 1200 },
-      { name: "Phone", price: 800 },
-      { name: "Headphones", price: 150 },
-      { name: "Monitor", price: 300 }
-    ];
+//ES3.3_CW
 
-    const filterAffordableProducts =(products, maxPrice) =>{
-        let productsWithPrice =[]
-        for(let i=0;i<products.length;i++){
-            if(products[i].price <= maxPrice){
-                productsWithPrice.push(products[i]);
-            }
-        }
-        return productsWithPrice;
-    }
-    
-    // console.log(filterAffordableProducts(products, 500));  
-//     // Expected Output: [ { name: "Headphones", price: 150 }, { name: "Monitor", price: 300 } ]
-//     ```
-    
+//Spread Operator -> ...
 
-// 1. You are given an array of products with a `category`. 
-// Write a function `countCategories(products)`that counts how many products belong to each category.
-    
+//create duplicate array
 
-    const products1 = [
-      { name: "Smartphone", category: "Electronics" },
-      { name: "T-Shirt", category: "Clothing" },
-      { name: "Laptop", category: "Electronics" },
-      { name: "Sofa", category: "Furniture" },
-      { name: "Headphones", category: "Electronics" },
-      { name: "Jacket", category: "Clothing" }
-    ];
+const array = [1,2,3,4,5,6];
 
-   const countCategories = (products) => {
-  const count = {};
+let newArray = array;
 
-  for (let i = 0; i < products.length; i++) {
-    const category = products[i].category;
+//console.log("new Array ",newArray);
+//console.log("original Array ",array);
 
-    if (count[category] === undefined) {
-      count[category] = 1;
-    } else {
-      count[category]++;
-    }
-  }
 
-  return count;
-};
-    
-    console.log(countCategories(products1));  
-    // Expected Output: { Electronics: 3, Clothing: 2, Furniture: 1 }
-//     ```
+newArray[3] =14;
+
+// console.log("new Array* ",newArray);//[ 1, 2, 3, 14, 5, 6 ]
+// console.log("original Array* ",array);// [ 1, 2, 3, 14, 5, 6 ] -> original got modified
+
+
+//if use spread operator
+
+//example 1
+let newNumsArray = [...array];
+
+//console.log(array,"original Array");
+//console.log(newNumsArray,"newNumsArray");
+
+//example 2
+
+let newStringArray = (arr) => [...arr];
+//console.log(newStringArray(["apple","orange"]));
+
+const addElement = (arr,element) => [...arr,element];
+
+//console.log(addElement(["mango","kiwi"],"strabbery"));
+
+//combined Array
+
+let combinedArray = (arr1,arr2,element) => [...arr1,...arr2,element];
+//console.log(combinedArray([1,2],[3,4]));
+console.log(combinedArray([1,2],[3,4],5));
+
+//copying array of objects
+
+const newObj = (obj) => ({...obj});
+
+//console.log(newObj({name:"SnehLata",age:19}));
+
+//adding element to object
+
+const newData = (obj,key,value) => ({...obj,key:value});
+//console.log(newData({name:"Jadeja",profession:"player"},"favColor","orange"));
