@@ -1,53 +1,46 @@
-//ES3.3_CW
+//Destructuring
 
-//Spread Operator -> ...
+//example1
 
-//create duplicate array
+const extractArrayValues = (arr) =>{
+    const [a,b,third] = arr;
 
-const array = [1,2,3,4,5,6];
+    //console.log(`a is ${a}, b is ${b} and c is ${third}`);
+}
 
-let newArray = array;
+extractArrayValues([1,2,3]);
 
-//console.log("new Array ",newArray);
-//console.log("original Array ",array);
+//example2
 
+const extractObjValues = (obj)=>{
+    const {name,age,salary} = obj;
 
-newArray[3] =14;
+    // console.log(`name: ${name}`);
+    // console.log(`age: ${age}`);
+    // console.log(`salary: ${salary}`);
+}
 
-// console.log("new Array* ",newArray);//[ 1, 2, 3, 14, 5, 6 ]
-// console.log("original Array* ",array);// [ 1, 2, 3, 14, 5, 6 ] -> original got modified
+extractObjValues({name:"Ravindra",age:23,salary:90000});
 
+//example 3
 
-//if use spread operator
+let obj3 = {
+    id:1,
+    name:"da vinci code",
+    details:{
+        year: "2002",
+        genre: "mystery",
+        info:{
+            director:"xyz",
+            status:"HIT"
+        }
+    }
+};
 
-//example 1
-let newNumsArray = [...array];
+const extractDetails = (obj3) =>{
+    const {name,details:{genre,year,info:{status}}} = obj3;
 
-//console.log(array,"original Array");
-//console.log(newNumsArray,"newNumsArray");
+    console.log(`Name of Movie: "${name}". It is released in ${year} with  ${genre} genre. Movie is ${status}`)
+}
 
-//example 2
-
-let newStringArray = (arr) => [...arr];
-//console.log(newStringArray(["apple","orange"]));
-
-const addElement = (arr,element) => [...arr,element];
-
-//console.log(addElement(["mango","kiwi"],"strabbery"));
-
-//combined Array
-
-let combinedArray = (arr1,arr2,element) => [...arr1,...arr2,element];
-//console.log(combinedArray([1,2],[3,4]));
-console.log(combinedArray([1,2],[3,4],5));
-
-//copying array of objects
-
-const newObj = (obj) => ({...obj});
-
-//console.log(newObj({name:"SnehLata",age:19}));
-
-//adding element to object
-
-const newData = (obj,key,value) => ({...obj,key:value});
-//console.log(newData({name:"Jadeja",profession:"player"},"favColor","orange"));
+extractDetails(obj3);
